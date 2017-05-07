@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="scripts.js" ></script>
+    <title>Fractal Generator</title>
+
+  </head>
+  <body>
+    <div id="container">
+      <div id="navbar">
+        <a href="Fractal1.html">Back to previous fractal |</a>
+        <a href="Fractal3.html"> On to the next fractal.</a>
+      </div>
+
+      <form class="form1">
+        <h1>Configuration</h1>
+        <div class="form-group">
+          <div class="row">
+            <label class="form-check-label" for="angle">Branch angle</label>
+              <div class="notice">Start angle between splits in the fractal?</div>
+              <input id="angle" class="center-range" type="range" min="1" max="25.0" step=".2" onchange="sliderChange()"/>
+          </div>
+
+          <div class="row">
+            <label class="form-check-label" for="length">Segment length</label>
+            <div class="notice">Long lengths slow things down.</div>
+              <input id="length" class="center-range" type="range" min="10" max="200" step="1" onchange="sliderChange()"/>
+          </div>
+
+          <div class="row">
+            <label class="form-check-label">Angle deviation</label>
+            <div class="notice">Select and hold the left/right keys to animate!</div>
+              <input id="anglediv" class="center-range" type="range" min="0" max="50" step=".05" onchange="sliderChange()"/>
+          </div>
+
+        </div>
+      </form>
+
+      <canvas id="canvas1" width="800" height="800"></canvas>
+
+    </div>
+    <script>
+      function drawTree(ctx, x, y, length, angle, div,ox,oy,anglediv) {
+        if (length > 5) {
+          ex = x + length*Math.cos(angle);
+          ey = y + length*Math.sin(angle);
+          ctx.beginPath();
+          ctx.moveTo(x,y);
+          ctx.lineTo(ex,ey);
+          ctx.stroke();
+          angle-=anglediv; //delta angle slider and new param needed
+          drawTree(ctx, ey, ex, length-10, angle+Math.PI/div,div,x,y,anglediv);
+          drawTree(ctx, y, x, length-10, angle-Math.PI/div,div,x,y,anglediv);
+        }
+      }
+
+      function sliderChange() {
+
+        var angle=document.getElementById("angle");
+        var length=document.getElementById("length");
+        var anglediv=document.getElementById("anglediv");
+        var xval=400;
+        var yval=400;
+
+        var c = document.getElementById("canvas1");
+        var ctx = c.getContext("2d");
+        ctx.lineWidth="1";
+        ctx.strokeStyle="green"; // Green path
+        ctx.clearRect(0, 0, c.width, c.height);
+
+        drawTree(ctx, xval, yval, length.value, -Math.PI/2.0, angle.value, xval, yval,anglediv.value);
+      }
+
+      var c = document.getElementById("canvas1");
+      var ctx = c.getContext("2d");
+      ctx.lineWidth="1";
+      ctx.strokeStyle="green"; // Green path
+      var angle=0;
+
+      drawTree(ctx, 400, 600, 100, -Math.PI/2.0, 6.0, 400, 400,0);
+      //drawTree(ctx, 400, 400, 120, Math.PI/2.0, 6.0, 400,  400);
+      //drawTree(ctx, 400, 400, 120, Math.PI+angle, 6.0, 400,  400);
+      //drawTree(ctx, 400, 400, 120, 0, 6.0, 400,  400);
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="scripts.js" ></script>
+    <title>Fractal Generator</title>
+
+  </head>
+
+
+  <body>
+    <div id="container">
+      <canvas id="canvas1" width="800" height="800"></canvas>
+    </div>
+    <form id="options">
+      <div class="form-group">
+        <legend>Options:</legend>
+
+        <label class="form-check-label">
+          <input id="angle" type="range" min="1" max="25.0" step=".2" onchange="sliderChange()"/>
+          Branch angle
+        </label>
+
+        <label class="form-check-label">
+          <input id="length" type="range" min="5" max="80" step="1" onchange="sliderChange()"/>
+          Segment length
+        </label>
+
+        <label class="form-check-label">
+          <input id="anglediv" type="range" min="0" max="10" step=".01" onchange="sliderChange()"/>
+          Angle deviation
+        </label>
+      </div>
+    </form>
+
+    <script>
+
+      function drawTree(ctx, x, y, length, angle,anglediv) {
+        if (length > 1) {
+          var ex = x+length*Math.cos(angle);
+          var ey = y+length*Math.sin(angle);
+          if (length<50){
+            angle+=1/12.0
+          }
+          ctx.beginPath();
+          ctx.moveTo(x,y);
+          ctx.lineTo(ex,ey);
+          ctx.stroke();
+          if (length>40){
+            anglediv=0;
+          }
+          else {
+            anglediv=document.getElementById("anglediv").value;
+          }
+
+          drawTree(ctx, ex, ey, length-5, angle-Math.PI/6.0+anglediv,anglediv);
+          drawTree(ctx, ex, ey, length-5, angle-Math.PI/6.0-anglediv,anglediv);
+          drawTree(ctx, ex, ey, length-5, angle+Math.PI/6.0-anglediv,anglediv);
+
+        }
+      }
+
+      function sliderChange() {
+
+        var angle=document.getElementById("angle");
+        var length=document.getElementById("length");
+        var anglediv=document.getElementById("anglediv");
+        var xval=300;
+        var yval=450;
+        var c = document.getElementById("canvas1");
+        var ctx = c.getContext("2d");
+        ctx.lineWidth="1";
+        ctx.strokeStyle="green"; // Green path
+        ctx.clearRect(0, 0, c.width, c.height);
+        drawTree(ctx, xval, yval, length.value,-Math.PI/2.0,anglediv);
+      }
+      sliderChange();
+
+    </script>
+
+  </body>
+
+</html>

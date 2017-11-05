@@ -1,129 +1,129 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+<!DOCTYPE html>
+<html lang="en">
 
-  <title>Fractal Generator</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A collection of mathematical patterns created using the html5 canvas">
+    <meta name="author" content="Jon Janelle">
+    <title>MathPatterns</title>
+	 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/heroic-features.css" rel="stylesheet">
+  </head>
 
-<body onload="optionsMenu('b'); gradientMenu();">
-  <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">MathPatterns</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Fractal Explorer</a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" href="circles/pattern1.html">Circles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="fractals/fractal1.html">Fractals</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="#">Previous</a>
-          </li>
-          <li>
-            <a href="#">Next</a>
-          </li>
-          <li>
-            <a href="#">Random</a>
-          </li>
-        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+		<div style="min-height: 75vh;">
+			<header class="jumbotron my-4">
+			<div class="display-4 mb-1 text-center">Welcome to MathPatterns</div>
+			<p class="lead text-center mb-4">An exploration of mathematical and algorithmic artwork</p>
+			<div class="text-center">
+			<a href="circles/pattern1.html" class="btn btn-primary btn-lg">Circles</a>
+			<a href="fractals/fractal1.html" class="btn btn-primary btn-lg">Fractals</a>
+			<p><br>There isn't much here yet, but check back soon for updates.</br>
+			</div>
+			</header>
+		</div>
+      <!-- Page Features -->
+	  <!-- 
+      <div class="row text-center">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <!-- /.navbar-collapse -->
+	  -->
+      <!-- /.row -->
+
     </div>
     <!-- /.container -->
-  </nav>
-  <div id="container">
 
-    <form class="form1">
-      <h1>Configuration</h1>
-
-      <div class="form-group">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" name="base-options" href="#" onclick="optionsMenu('b')">Base</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" name="color-options" href="#" onclick="optionsMenu('c')">Colors</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" name="animate" href="#" onclick="animateFractal()">Animate</a>
-          </li>
-        </ul>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Last updated Fall 2017 by <a href="http://www.jjanelle.me">Jon Janelle</a></p>
+		
       </div>
+      <!-- /.container -->
+    </footer>
 
-      <div class="form-group" id="baseoptions">
+    <!-- Bootstrap core JavaScript -->
+	 <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
 
-        <div class="row">
-          <label class="form-check-label" for="length">Segment length</label>
-          <div class="notice">Long lengths slow animations down.</div>
-          <input id="length" class="center-range" type="range" min="5" max="65" step="1" onchange="sliderChange()"/>
-        </div>
-
-        <div class="row">
-          <label class="form-check-label">Angle</label>
-          <div class="notice">Angle of turns in figure</div>
-          <input id="anglediv" class="center-range" type="range" min="0" max="100" step=".01" onchange="sliderChange()"/>
-        </div>
-
-        <div class="row">
-          <label class="form-check-label" for="anim-speed">Animation Speed</label>
-          <input id="anim-speed" class="center-range" type="range" min=".002" max=".1" step=".002" onchange="sliderChange()"/>
-        </div>
-
-        <div class="row">
-          <label class="form-check-label" for="branch-count">Number of branches: </label>
-          <div class="notice">Values must be 1-10</div>
-          <input type="number" class="form-control" id="branch_count" value="1" onchange="setBranch()"/>
-        </div>
-      </div>
-
-      <div class="form-group" id="coloroptions">
-        <div class="row">
-          <label class="form-check-label" for="bg-color">Background Color: </label>
-          <div class="notice">Window background color</div>
-          <input type="color" id="bg-color" class="colorpick" value="#FFFFFF" onchange="gradientMenu()">
-        </div>
-
-        <div class="row">
-          <label class="form-check-label" for="start-color">Gradient 1 Start Color: </label>
-          <input type="color" id="start-color" class="colorpick" value="#FF00FF" onchange="setColors()">
-        </div>
-        <div class="row">
-          <label class="form-check-label" for="stop-color">Gradient 1 End Color: </label>
-          <input type="color" id="stop-color" class="colorpick" value="#0000FF" onchange="setColors()">
-        </div>
-
-        <div class="row">
-          <input type="checkbox" id="grad2-check" value="#0000FF" onchange="gradientMenu()">
-          <label class="form-check-label" for="grad2-check">Transition between gradients?</label>
-        </div>
-
-        <div class="form-group" id="gradient2">
-          <div class="row">
-            <label class="form-check-label" for="start-color2">Gradient 2 Start Color: </label>
-            <input type="color" id="start-color2" class="colorpick" value="#0000FF" onchange="setColors()">
-          </div>
-          <div class="row">
-            <label class="form-check-label" for="stop-color2">Gradient 2 Stop Color: </label>
-            <input type="color" id="stop-color2" class="colorpick" value="#FF00FF" onchange="setColors()">
-          </div>
-        </div>
-
-      </div>
-    </form>
-
-    <canvas id="canvas1" width="500" height="500"></canvas>
-
-  </div>
-  <script type="text/javascript" src="js/menuScripts.js"></script>
-</body>
 </html>

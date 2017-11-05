@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A collection of fractal based patterns that highlight the artistic potential of mathematics">
+    <meta name="author" content="Jon Janelle">
+	<title>Fractal Pattern 1</title>
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/styles.css">
+	<link rel="stylesheet" href="../css/fractal_styles.css">
+</head>
+<body>
+	<nav class="navbar navbar-toggleable-md navbar-dark bg-dark bg-faded">
+	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <a class="navbar-brand text-left" href="../index.html">MathPatterns</a>
+	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+		  <a class="nav-item nav-link" href="../index.html">Home</a>
+		  <a class="nav-item nav-link" href="../circles/pattern1.html">Circles</a>
+		  <a class="nav-item nav-link" href="fractal1.html">Fractals</a>
+		</div>
+	  </div>
+	</nav>
+	<div class="flex-container">
+		<div class="flex-item menu-panel">
+			<div class="card">
+				<div class="card-header bg-info text-white text-center">
+					Modify Drawing
+				</div>
+				<div class="card-block mt-1 ml-2 mr-2">
+					<div class="card-text text-center">
+						Use the sliders below to change the shape, color, and complexity of the figure!
+						<br>
+						<div class="row mt-2">	
+							<div class="col-6 text-left">&nbsp;</div>
+							<div class="col-6 text-right"></div>	
+						</div>
+					</div>
+					<div class="form-group mt-2">
+						<ul class="nav nav-tabs">
+						  <li class="nav-item">
+							<a class="nav-link active" id="base-button" name="base-options" href="#" onclick="optionsMenu('b')">Base</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" id="color-button" name="color-options" href="#" onclick="optionsMenu('c')">Colors</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link bg-inactive" id="animate-button" name="animate" href="#" >Animate</a>
+						  </li>
+						</ul>
+					</div>
+					<hr>
+					<div id="baseoptions">
+						<div>
+						  <label class="form-check-label" for="length">Segment length</small></label>
+						  <input id="length" class="center-range" type="range" min="5" max="70" step="1" value="60" onchange="drawFractal1()"/>
+						</div>
+						<hr>
+						<div>
+						  <label class="form-check-label">Angle</label>
+						  <input id="anglediv" class="center-range" type="range" min="0" max="300" step=".01" value="97" onchange="drawFractal1()"/>
+						</div>
+						<hr>
+						<div>
+						  <label class="form-check-label" for="anim-speed">Animation Speed</label>
+						  <input id="anim-speed" class="center-range" type="range" min=".002" max=".1" step=".002" onchange="drawFractal1()"/>
+						</div>
+						<hr>
+						<div>
+						  <label class="form-check-label" for="branch-count">Number of branches: </label>
+						  <input type="number" class="form-control" id="branch_count" value="4" onchange="setBranch()"/>
+						</div>
+						<hr>
+					</div>
+
+					<div id="coloroptions">
+						<div>
+						  <label class="form-check-label" for="bg-color">Background Color: </label>
+						  <input type="color" id="bg-color" class="colorpick" value="#FFFFFF" onchange="gradientMenu()">
+						</div>
+						<hr>
+						<div>
+						  <label class="form-check-label" for="start-color">Gradient 1 Start Color: </label>
+						  <input type="color" id="start-color" class="colorpick" value="#FF00FF" onchange="setColors()">
+						</div>
+						<hr>
+						<div>
+						  <label class="form-check-label" for="stop-color">Gradient 1 End Color: </label>
+						  <input type="color" id="stop-color" class="colorpick" value="#0000FF" onchange="setColors()">
+						</div>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex-item canvas-panel">
+			<canvas id="main-canvas" class="light-shadow form-element" style="">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+		</div>
+	</div>	
+	
+	<script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="../js/utility_functions.js"></script>
+	<script type="text/javascript" src="../js/fractal1.js"></script>
+	<script>
+	
+		function optionsMenu(option){
+			var baseDiv = document.getElementById('baseoptions');
+			var colorDiv = document.getElementById('coloroptions');
+			var baseButton = document.getElementById('base-button');
+			var colorButton = document.getElementById('color-button');
+			if (option == 'c') {
+			  baseDiv.style.display = 'none';
+			  colorDiv.style.display = 'block';
+			  colorButton.classList.add('active');
+			  baseButton.classList.remove('active');
+			}
+			else {
+			  baseDiv.style.display = 'block';
+			  colorDiv.style.display = 'none';
+			  colorButton.classList.remove('active');
+			  baseButton.classList.add('active');
+			}
+		}	
+		
+		function updateCanvasSize(ctx, canvas) {
+			if (window.innerWidth <= 768) {
+				canvas.width = window.innerWidth;
+				canvas.height = parseInt(window.innerHeight*.8);
+			} else {
+				canvas.width = parseInt(window.innerWidth*.75);
+				canvas.height = parseInt(window.innerHeight*.9);
+			}
+		}
+		
+		$(function(){
+			var canvas = document.getElementById("main-canvas");
+			var ctx = canvas.getContext("2d");
+			updateCanvasSize(ctx, canvas);
+			$(window).resize(function() { updateCanvasSize(ctx, canvas) });
+			
+			$("#animate-button").on("click", function() {
+				if (this.classList.contains("bg-active")) {
+					this.classList.add("bg-inactive");
+					this.classList.remove("bg-active");
+				} else {
+					this.classList.remove("bg-inactive");
+					this.classList.add("bg-active");
+				}
+				animateFractal();
+			});
+			optionsMenu('b');
+			drawFractal1();
+		});
+	</script>
+</body>
+</html>

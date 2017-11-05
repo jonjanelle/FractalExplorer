@@ -1,20 +1,14 @@
-//Set a few globals
-//TODO: Make objects to organize this info.
 var strokeColor=[0,255,0,1];
 var intervalID=null;
-
-var c = document.getElementById("canvas1");
-var baseDiv = document.getElementById('baseoptions');
-var colorDiv = document.getElementById('coloroptions');
+var c = document.getElementById("main-canvas");
 var speed = document.getElementById("anim-speed");
 var length = document.getElementById("length");
 var anglediv = document.getElementById("anglediv");
 var branches = document.getElementById("branch_count").value;
 
-
 var startColor = String(document.getElementById("start-color").value);
 var stopColor = String(document.getElementById("stop-color").value);
-sliderChange();
+drawFractal1();
 
 
 
@@ -44,6 +38,7 @@ function gradientMove(p) {
  * Recursively draw a tree
  */
 function drawTree(ctx, x, y, length, angle, div,ox,oy,anglediv, gradPct) {
+
   if (length > 10) {
     ex = x + length*Math.cos(angle);
     ey = y + length*Math.sin(angle);
@@ -66,17 +61,21 @@ function drawTree(ctx, x, y, length, angle, div,ox,oy,anglediv, gradPct) {
  *
  *
  */
-function sliderChange() {
-  anglediv.step=speed.value;
-  var ctx = c.getContext("2d");
-  ctx.lineWidth="1";
-  var branches=document.getElementById("branch_count").value;
-  ctx.clearRect(0, 0, c.width, c.height);
-  var xval=c.width/2;
-  var yval=c.height/2;
-  for (var i = 0; i < branches; i++){
-    drawTree(ctx, xval, yval, length.value, Math.PI/2.0+2*i*Math.PI/branches, anglediv.value, xval, yval, anglediv.value, 0);
-  }
+function drawFractal1() {
+	anglediv.step=speed.value;
+	var ctx = c.getContext("2d");
+	ctx.lineWidth="1";
+	var branches=document.getElementById("branch_count").value;
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.beginPath();
+	ctx.fillStyle = "white";
+	ctx.fillRect(0, 0, c.width, c.height);
+	ctx.closePath();
+	var xval=c.width/2;
+	var yval=c.height/2;
+	for (var i = 0; i < branches; i++){
+		drawTree(ctx, xval, yval, length.value, Math.PI/2.0+2*i*Math.PI/branches, anglediv.value, xval, yval, anglediv.value, 0);
+	}
 }
 
 /**
@@ -95,26 +94,11 @@ function animateFractal() {
       if (angle.value >= 49){
         angle.value=0;
       }
-      sliderChange();
+      drawFractal1();
     },20)
   }
 }
 
-/**
- * Show/hide divs in the main menubar based on which nav tab
- * is clicked.
- */
-function optionsMenu(option){
-
-    if (option == 'c') {
-      baseDiv.style.display = 'none';
-      colorDiv.style.display = 'block';
-    }
-    else {
-      baseDiv.style.display = 'block';
-      colorDiv.style.display = 'none';
-    }
-}
 
 /**
  *  Show/hide the gradient 2 menu on grad2-check toggle
@@ -144,7 +128,7 @@ function setBranch(){
     branches.value = 10;
   }
   else {
-    sliderChange();
+    drawFractal1();
   }
 }
 

@@ -8,6 +8,7 @@ var branches = document.getElementById("branch_count").value;
 
 var startColor = String(document.getElementById("start-color").value);
 var stopColor = String(document.getElementById("stop-color").value);
+var bgColor = String(document.getElementById("bg-color").value);
 drawFractal1();
 
 
@@ -18,6 +19,7 @@ function setColors()
 {
   startColor = document.getElementById("start-color").value;
   stopColor = document.getElementById("stop-color").value;
+  bgColor = document.getElementById("bg-color").value;
 }
 
 //Linear interpolation of colors to form gradient
@@ -68,7 +70,7 @@ function drawFractal1() {
 	var branches=document.getElementById("branch_count").value;
 	ctx.clearRect(0, 0, c.width, c.height);
 	ctx.beginPath();
-	ctx.fillStyle = "white";
+	ctx.fillStyle = bgColor;
 	ctx.fillRect(0, 0, c.width, c.height);
 	ctx.closePath();
 	var xval=c.width/2;
@@ -91,8 +93,8 @@ function animateFractal() {
     var angle = document.getElementById("anglediv");
     intervalID = setInterval(function(){
       angle.stepUp();
-      if (angle.value >= 49){
-        angle.value=0;
+      if (angle.value >= 180){
+        angle.value=0.1;
       }
       drawFractal1();
     },20)

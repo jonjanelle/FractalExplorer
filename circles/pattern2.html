@@ -10,19 +10,25 @@
 	<link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-	<nav class="navbar navbar-toggleable-md navbar-dark bg-dark bg-faded">
-	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
-	  <a class="navbar-brand text-left" href="../index.html">MathPatterns</a>
-	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		<div class="navbar-nav">
-		<a class="nav-item nav-link" href="../index.html">Home</a>
-		  <a class="nav-item nav-link" href="pattern1.html">Circles</a>
-		  <a class="nav-item nav-link" href="../fractals/fractal1.html">Fractals</a>
-		</div>
-	  </div>
-	</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html">MathPatterns</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              <a class="nav-link" href="pattern1.html">Circles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../fractals/fractal1.html">Fractals</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 	
 	<div class="flex-container">
 		<div class="flex-item menu-panel">
@@ -34,7 +40,7 @@
 					<div class="card-text text-center">
 						Use the sliders below to change the shape, color, and complexity of the figure!
 						<br>
-						<div class="row mt-2">	
+						<div class="row mt-0">	
 							<div class="col-6 text-left"><a href="pattern1.html" class="text-right header-button">< Prev </a></div>
 							<div class="col-6 text-right"><a href="pattern3.html" class="text-right header-button">Next ></a></div>	
 						</div>
@@ -80,7 +86,14 @@
 			</canvas>
 		</div>
 	</div>	
-	
+	<!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Last updated Fall 2017 by <a href="http://www.jjanelle.me">Jon Janelle</a></p>
+		
+      </div>
+      <!-- /.container -->
+    </footer>
 	<script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="../js/utility_functions.js"></script>

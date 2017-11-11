@@ -6,14 +6,16 @@ def createCssTag(file_name, root_path, css_paths):
     for path in css_paths:
         if file_name in os.listdir("{0}/{1}".format(root_path, path)):
             print("Added " + file_name)
-            return "<link rel='stylesheet' href='{0}/{1}/{2}'>".format(root_path,path, file_name)
+            #return "<link rel='stylesheet' href='{0}/{1}/{2}'>".format(root_path,path, file_name)
+            return "<link rel='stylesheet' href='/{0}/{1}'>".format(path, file_name)
 
 ##
 def createJsTag(file_name, root_path, js_paths):
     for path in js_paths:
         if file_name in os.listdir("{0}/{1}".format(root_path, path)):
             print("Added " + file_name)
-            return "<script type='text/javascript' src='{0}/{1}/{2}'></script>".format(root_path, path, file_name)
+            #return "<script type='text/javascript' src='{0}/{1}/{2}'></script>".format(root_path, path, file_name)
+            return "<script type='text/javascript' src='/{0}/{1}'></script>".format(path, file_name)
 
 ##
 def addFileToStr(fileName, resultString, root_path, css_paths, js_paths, ext):

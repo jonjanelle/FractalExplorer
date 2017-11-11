@@ -1,8 +1,10 @@
-
 body {
 	font-family: font-family: Arial, Helvetica, sans-serif;
-	background-color: #f7f7f7;
-	
+	background-color: #f7f7f7;	
+}
+
+.home-jumbo {
+	border: 1px solid #CCCCCC;
 }
 
 .text-white {
@@ -65,23 +67,24 @@ footer {
 	.menu-panel {
 		border-bottom: 2px solid #888888;
 		order: 1 !important;
-		height: 20vh;
+		height: 25vh;
 		width: 100vw;
 	}
 }
 
 .header-button {
 	border: 1px solid rgba(200, 200, 200, .7);
-	padding: 0px 5px;
+	padding: 0px 5px 3px 5px;
 	border-radius: 4px;
 	background-color: #F5F5FF;
 	font-weight: bold;
 	color: gray;
 }
+
 .header-button:hover {
-		cursor: pointer;
-		text-decoration: none;
-		-webkit-box-shadow: 0px 0px 3px 0px rgba(150,150,150,0.5);
-		-moz-box-shadow: 0px 0px 3px 0px rgba(150,150,150,0.5);
-		box-shadow: 0px 0px 3px 0px rgba(150,150,150,0.5);
+	cursor: pointer;
+	text-decoration: none;
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(150,150,150,0.5);
+	-moz-box-shadow: 0px 0px 3px 0px rgba(150,150,150,0.5);
+	box-shadow: 0px 0px 3px 0px rgba(150,150,150,0.5);
 }

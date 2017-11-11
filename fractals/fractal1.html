@@ -6,11 +6,7 @@
     <meta name="description" content="A collection of circle based patterns that highlight the artistic potential of mathematics">
     <meta name="author" content="Jon Janelle">
 	<title>Math Patterns</title>
-	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="../css/styles.css">
-	<link rel="stylesheet" href="../css/fractal_styles.css">
-	<link rel="stylesheet" href="../css/home.css">
-</head>
+<link rel='stylesheet' href='C:\cygwin64\home\jon\FractalExplorer/vendor/bootstrap/css/bootstrap.min.css'><link rel='stylesheet' href='C:\cygwin64\home\jon\FractalExplorer/css/styles.css'><link rel='stylesheet' href='C:\cygwin64\home\jon\FractalExplorer/css/fractal_styles.css'></head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div class="container-fluid">
@@ -41,8 +37,8 @@
 						Use the sliders below to change the shape, color, and complexity of the figure!
 						<br>
 						<div class="row mt-0">	
-							<div class="col-6 text-left">&nbsp;</div>
-							<div class="col-6 text-right"></div>	
+							<div class="col-6 text-left"></div>
+							<div class="col-6 text-right"><a href="fractal2.html" class="text-right header-button">Next ></a></div>	
 						</div>
 					</div>
 					<div class="form-group mt-2">
@@ -62,22 +58,22 @@
 					<div id="baseoptions">
 						<div>
 						  <label class="form-check-label" for="length">Segment length</small></label>
-						  <input id="length" class="center-range" type="range" min="5" max="70" step="1" value="60" onchange="drawFractal1()"/>
+						  <input id="length" class="center-range redraw-element" type="range" min="5" max="70" step="1" value="60" />
 						</div>
 						<hr>
 						<div>
 						  <label class="form-check-label">Angle</label>
-						  <input id="anglediv" class="center-range" type="range" min=".1" max="180" step=".1" value="25" onchange="drawFractal1()"/>
+						  <input id="anglediv" class="center-range redraw-element" type="range" min=".1" max="180" step=".1" value="25" />
 						</div>
 						<hr>
 						<div>
 						  <label class="form-check-label" for="anim-speed">Animation Speed</label>
-						  <input id="anim-speed" class="center-range" type="range" min=".002" max=".1" step=".002" onchange="drawFractal1()"/>
+						  <input id="anim-speed" class="center-range redraw-element" type="range" min=".002" max=".1" step=".002" />
 						</div>
 						<hr>
 						<div>
 						  <label class="form-check-label" for="branch-count">Number of branches: </label>
-						  <input type="number" class="form-control" id="branch_count" value="4" onchange="setBranch()"/>
+						  <input type="number" class="form-control" id="branch_count" value="4" />
 						</div>
 						<hr>
 					</div>
@@ -85,17 +81,17 @@
 					<div id="coloroptions">
 						<div>
 						  <label class="form-check-label" for="bg-color">Background Color: </label>
-						  <input type="color" id="bg-color" class="colorpick" value="#FFFFFF" onchange="setColors()">
+						  <input type="color" id="bg-color" class="colorpick" value="#FFFFFF" />
 						</div>
 						<hr>
 						<div>
 						  <label class="form-check-label" for="start-color">Gradient 1 Start Color: </label>
-						  <input type="color" id="start-color" class="colorpick" value="#FF00FF" onchange="setColors()">
+						  <input type="color" id="start-color" class="colorpick" value="#FF00FF" />
 						</div>
 						<hr>
 						<div>
 						  <label class="form-check-label" for="stop-color">Gradient 1 End Color: </label>
-						  <input type="color" id="stop-color" class="colorpick" value="#0000FF" onchange="setColors()">
+						  <input type="color" id="stop-color" class="colorpick" value="#0000FF" />
 						</div>
 						<hr>
 					</div>
@@ -115,11 +111,7 @@
 	
   </div>
   <!-- /.container -->
-</footer><script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="../js/utility_functions.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>	<script type="text/javascript" src="../js/fractal1.js"></script>
-	<script>
+</footer><script type='text/javascript' src='C:\cygwin64\home\jon\FractalExplorer/vendor/jquery/jquery.min.js'></script><script type='text/javascript' src='C:\cygwin64\home\jon\FractalExplorer/vendor/bootstrap/js/bootstrap.bundle.min.js'></script><script type='text/javascript' src='C:\cygwin64\home\jon\FractalExplorer/js/utility_functions.js'></script><script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script><script type='text/javascript' src='C:\cygwin64\home\jon\FractalExplorer/js/fractal1.js'></script>	<script>
 		function optionsMenu(option){
 			var baseDiv = document.getElementById('baseoptions');
 			var colorDiv = document.getElementById('coloroptions');
@@ -139,21 +131,14 @@
 			}
 		}	
 		
-		function updateCanvasSize(ctx, canvas) {
-			if (window.innerWidth <= 768) {
-				canvas.width = window.innerWidth;
-				canvas.height = parseInt(window.innerHeight*.8);
-			} else {
-				canvas.width = parseInt(window.innerWidth*.75);
-				canvas.height = parseInt(window.innerHeight*.9);
-			}
-		}
-		
 		$(function(){
+			$(".redraw-element").on("change", drawFractal1);
+			$(".colorpick").on("change", setColors);
+			document.getElementById("branch_count").onchange = setBranch;
 			var canvas = document.getElementById("main-canvas");
 			var ctx = canvas.getContext("2d");
-			updateCanvasSize(ctx, canvas);
-			$(window).resize(function() { updateCanvasSize(ctx, canvas) });
+			updateCanvasSize(canvas, drawFractal1);
+			$(window).resize(function() { updateCanvasSize(canvas, drawFractal1) });
 			
 			$("#animate-button").on("click", function() {
 				if (this.classList.contains("bg-active")) {

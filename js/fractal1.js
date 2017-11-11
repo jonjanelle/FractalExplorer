@@ -5,7 +5,6 @@ var speed = document.getElementById("anim-speed");
 var length = document.getElementById("length");
 var anglediv = document.getElementById("anglediv");
 var branches = document.getElementById("branch_count").value;
-
 var startColor = String(document.getElementById("start-color").value);
 var stopColor = String(document.getElementById("stop-color").value);
 var bgColor = String(document.getElementById("bg-color").value);
@@ -26,11 +25,9 @@ function setColors()
 function gradientMove(p) {
   var cStart=hexToRgb(startColor);
   var cEnd=hexToRgb(stopColor);
-
   var newR=parseInt(cStart.r*p+cEnd.r*(1-p));
   var newG=parseInt(cStart.g*p+cEnd.g*(1-p));
   var newB=parseInt(cStart.b*p+cEnd.b*(1-p));
-
   strokeColor[0]=newR;
   strokeColor[1]=newG;
   strokeColor[2]=newB;
@@ -40,7 +37,6 @@ function gradientMove(p) {
  * Recursively draw a tree
  */
 function drawTree(ctx, x, y, length, angle, div,ox,oy,anglediv, gradPct) {
-
   if (length > 10) {
     ex = x + length*Math.cos(angle);
     ey = y + length*Math.sin(angle);
@@ -132,29 +128,4 @@ function setBranch(){
   else {
     drawFractal1();
   }
-}
-
-/*
- * Separate a hexadecimal RGB color representation into decimal r,g,b components
- * http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
- */
-function hexToRgb(hex) {
-  //  alert(hex);
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-    } : null;
-}
-
-//Convert a hex string x00-xFF to a decimal 0 to 255
-function componentToHex(c) {
-  var hex = c.toString(16);
-  return hex.length == 1 ? "0" + hex : hex;
-}
-
-//Convert a decimal-specified rgb color to the equivalent hex string.
-function rgbToHex(r, g, b) {
-  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }

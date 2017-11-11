@@ -39,9 +39,20 @@ function hexToRgb(hex) {
 
 ///////////////////////////////
 
-
-
-
+// Resize a canvas element based on the window dimensions
+// and perform a specified callback function
+///////////////////////////////
+function updateCanvasSize(canvas, redrawCallback) {
+	if (window.innerWidth <= 768) {
+		canvas.width = window.innerWidth;
+		canvas.height = parseInt(window.innerHeight*.8);
+	} else {
+		canvas.width = parseInt(window.innerWidth*.75);
+		canvas.height = parseInt(window.innerHeight*.9);
+	}
+	redrawCallback();
+}
+///////////////////////////////
 
 
 

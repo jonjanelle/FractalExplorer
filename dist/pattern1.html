@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A collection of circle based patterns that highlight the artistic potential of mathematics">
+    <meta name="author" content="Jon Janelle">
+	<title>Math Patterns</title>
+<link rel='stylesheet' href='vendor/bootstrap/css/bootstrap.min.css'><link rel='stylesheet' href='css/styles.css'><link rel='stylesheet' href='css/fractal_styles.css'></head>
+	<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <div class="container-fluid">
+	<a class="navbar-brand" href="index.html">MathPatterns</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+	  <ul class="navbar-nav ml-auto">
+
+		<li class="nav-item">
+		  <a class="nav-link" href="pattern1.html">Circles</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="fractal1.html">Fractals</a>
+		</li>
+	  </ul>
+	</div>
+  </div>
+</nav>		<div class="flex-container">
+			<div class="flex-item menu-panel">
+				<div class="card">
+					<div class="card-header bg-info text-white text-center">
+						Modify Drawing
+					</div>
+					<div class="card-block mt-1 ml-2 mr-2">
+						<div class="card-text text-center">
+							Use the sliders below to change the shape, color, and complexity of the figure!
+							<br>
+							<div class="row mt-0">					
+								<div class="col-6 text-left"></div>
+								<div class="col-6 text-right"><a href="pattern2.html" class="text-right header-button">Next ></a></div>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Radius <span id="radius-display" class="text-blue"></span></div>
+							<div class="col"><input type="range" id="radius" min="5" max="200" value="100" class="form-element" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Degrees of Rotation <span id="degree-display" class="text-blue"></span></div>
+							<div class="col"><input type="range" id="deg" min="50" max="360" value="360" class="form-element" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Degree Increment <span id="deg-inc-display" class="text-blue"></span></div>
+							<div class="col"><input type="range" id="deg-inc" min="10" max="180" value="20" class="form-element" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">X Radius Multiplier <span id="x-rmult-display" class="text-blue"></span></div>
+							<div class="col"><input type="range" id="x-mult" min="-3" max="3" step="0.1" value="1" class="form-element" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Y Radius Multiplier <span id="y-rmult-display" class="text-blue"></div>
+							<div class="col"><input type="range" id="y-mult" min="-3" max="3" step="0.1" value="1" class="form-element" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Number of Layers <span id="layers-display" class="text-blue"></div>
+							<div class="col"><input type="range" id="num-layers" min="1" max="20" value="1" class="form-element" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Circle Color</div>
+							<div class="col"><input type="color" id="circle-color" class="form-element" style="width: 90%;" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Point Color</div>
+							<div class="col"><input type="color" id="point-color" class="form-element" style="width: 90%;" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Line Width <span id="line-width-display" class="text-blue"></div>
+							<div class="col"><input type="range" id="line-width" min="1" max="10" value="1" class="form-element" /></div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">Point Size <span id="point-size-display" class="text-blue"></div>
+							<div class="col"><input type="range" id="point-size" min="1" max="10" value="5" class="form-element" /></div>
+						</div>
+						<hr>
+					</div>
+				</div>
+			</div>
+			<div class="flex-item canvas-panel">
+				<canvas id="myCanvas" class="light-shadow form-element" style="">
+					Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+		</div>	
+<footer class="py-5 bg-dark">
+  <div class="container">
+	<p class="m-0 text-center text-white">Last updated 2020 by Jon Janelle</p>
+	
+  </div>
+  <!-- /.container -->
+</footer><script type='text/javascript' src='vendor/jquery/jquery.min.js'></script><script type='text/javascript' src='vendor/bootstrap/js/bootstrap.bundle.min.js'></script><script type='text/javascript' src='js/utility_functions.js'></script><script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>		<script type="text/javascript" src="../js/CirclePatterns.js"></script>
+		<script>
+			var r = parseInt($("#radius").val());
+			var deg = parseInt($("#deg").val());
+			var degInc = parseInt($("#deg-inc").val());
+			var xMult = $("#x-mult").val();
+			var yMult = $("#y-mult").val();
+			var nLayers = parseInt($("#num-layers").val());
+			var cColor = $("#circle-color").val();
+			var pColor = $("#point-color").val();
+			var lineWidth = parseInt($("#line-width").val());
+			var pointSize = parseInt($("#point-size").val());
+			var degDisplay = $("#degree-display");
+			var radiusDisplay = $("#radius-display");
+			var degIncDisplay = $("#deg-inc-display");
+			var xrMultDisplay = $("#x-rmult-display");
+			var yrMultDisplay = $("#y-rmult-display");
+			var layersDisplay = $("#layers-display");
+			var lineWidthDisplay = $("#line-width-display");
+			var pointSizeDisplay = $("#point-size-display");
+			
+			function updateDisplay(ctx) {
+				var r = parseInt($("#radius").val());
+				radiusDisplay.html("("+r+")");
+				var deg = parseInt($("#deg").val());
+				degDisplay.html("("+deg+")");
+				var degInc = parseInt($("#deg-inc").val());
+				degIncDisplay.html("("+degInc+")");
+				var xMult = $("#x-mult").val();
+				xrMultDisplay.html("("+xMult+")");
+				var yMult = $("#y-mult").val();
+				yrMultDisplay.html("("+yMult+")");
+				var nLayers = parseInt($("#num-layers").val());
+				layersDisplay.html("("+nLayers+")");
+				var cColor = $("#circle-color").val();
+				var pColor = $("#point-color").val();
+				var lineWidth = parseInt($("#line-width").val());
+				lineWidthDisplay.html("("+lineWidth+")");
+				var pointSize = parseInt($("#point-size").val());
+				pointSizeDisplay.html("("+pointSize+")");
+				drawPattern(ctx, r, nLayers, deg, degInc, xMult, yMult, cColor, pColor, 1, 1, lineWidth, pointSize);
+			}
+			
+			function updateCanvasSize(canvas, ctx) {
+				if (window.innerWidth <= 768) {
+					canvas.width = window.innerWidth;
+					canvas.height = parseInt(window.innerHeight*.8);
+				} else {
+					canvas.width = parseInt(window.innerWidth*.75);
+					canvas.height = parseInt(window.innerHeight*.9);
+				}
+				updateDisplay(ctx);
+			}
+			
+			$(document).ready(function(){
+				var canvas = document.getElementById("myCanvas");
+				var ctx = canvas.getContext("2d");
+				updateCanvasSize(canvas, ctx);
+				$(".form-element").change(function() {	
+					updateDisplay(ctx);
+				});
+				$(window).resize(function() {
+					updateCanvasSize(canvas, ctx);
+				});
+				
+			});
+		</script>
+	</body>
+</html>

@@ -1,4 +1,7 @@
-## Compiler for a simple html templating system.
+## Compiler for the jst html templating system
+##  - Made to meet the specific needs of this site and may not be readily applicable elsewhere.
+## Author: Jon Janelle
+
 import re, os, os.path
 
 ##
@@ -7,7 +10,7 @@ def createCssTag(file_name, root_path, css_paths):
         if file_name in os.listdir("{0}/{1}".format(root_path, path)):
             print("Added " + file_name)
             #return "<link rel='stylesheet' href='{0}/{1}/{2}'>".format(root_path,path, file_name)
-            return "<link rel='stylesheet' href='/{0}/{1}'>".format(path, file_name)
+            return "<link rel='stylesheet' href='{0}/{1}'>".format(path, file_name)
 
 ##
 def createJsTag(file_name, root_path, js_paths):
@@ -15,7 +18,7 @@ def createJsTag(file_name, root_path, js_paths):
         if file_name in os.listdir("{0}/{1}".format(root_path, path)):
             print("Added " + file_name)
             #return "<script type='text/javascript' src='{0}/{1}/{2}'></script>".format(root_path, path, file_name)
-            return "<script type='text/javascript' src='/{0}/{1}'></script>".format(path, file_name)
+            return "<script type='text/javascript' src='{0}/{1}'></script>".format(path, file_name)
 
 ##
 def addFileToStr(fileName, resultString, root_path, css_paths, js_paths, ext):
@@ -45,25 +48,29 @@ def addFileToStr(fileName, resultString, root_path, css_paths, js_paths, ext):
     return resultString
 
 ##
-def compileFile(fileName, current_dir, ext, outExt, root_path, css_paths, js_paths):
+def compileFile(fileName, current_dir, ext, outExt, root_path, css_paths, js_paths, output_directory):
     original_dir = os.getcwd()
     os.chdir(current_dir)
     fh = open("{0}{1}".format(fileName, ext),'r')
     outFileName = "{0}{1}".format(fileName, outExt)
     try:
-        os.remove(outFileName)
+        os.remove("{0}/{1}".format(output_directory,outFileName))
     except OSError:
         pass
-    outFile = open(outFileName,'x')
+
     outText = str()
     outText = addFileToStr("{0}{1}".format(fileName, ext), outText, root_path, css_paths, js_paths, ext)
     fh.close()
+    
+    os.chdir(output_directory)
+    outFile = open(outFileName,'x')
     outFile.write(outText)
-    print(outFileName + " created successfully")
     outFile.close()
+    
+    print(outFileName + " created successfully")
     os.chdir(original_dir)
 
-# Get array of all file names in a directory
+# Get array of all file names in a directory with a given extension
 # dir: directory path string
 # ext: file extension
 def getFilesInDir(dir_path, ext=None):
@@ -83,17 +90,20 @@ if __name__ == "__main__":
     source_dirs = ['.', 'circles', 'fractals']
     css_paths = ['css', 'vendor/bootstrap/css']
     js_paths = ['js', 'vendor/jquery','vendor/bootstrap/js']
-    # file extensions of the input and output files
-    ext = ".jst"
-    outExt = ".html"
-    # assumed that compilation begins in root directory
-    root_path = os.getcwd()
+    
+    output_directory = 'C:\dev\FractalExplorer\dist'
+    
+    ext = ".jst"     # Compile all files with extension jst
+    outExt = ".html" # Output as html
+    
+    root_path = os.getcwd() # This compiler assumed that compilation begins in root directory
+    
     for current_dir in source_dirs:
         jstFiles = getFilesInDir(current_dir, ext)
         for fn in jstFiles:
             f_tmp = fn.split(".")
             fileName = str('.').join(f_tmp[0:len(f_tmp)-1])
-            compileFile(fileName, current_dir, ext, outExt, root_path, css_paths, js_paths)
+            compileFile(fileName, current_dir, ext, outExt, root_path, css_paths, js_paths, output_directory)
     print("Compilation completed")
 
 
